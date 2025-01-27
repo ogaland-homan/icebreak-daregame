@@ -1,18 +1,175 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>基本のHTML</title>
+    <title>この人だぁーれ？</title>
     <link rel="stylesheet" href="css/main.css">
 </head>
+
 <body>
-    <h1>こんにちは、世界！</h1>
-    <p>これは基本的なHTMLの構造です。aaaaaaaaaaaaaa</p>
-    <p id="current-time"></p>
-    <script src="js/index.js"></script>
-    <script>
-        document.getElementById('current-time').textContent = getCurrentTime();
-    </script>
+    <header>
+        <h1>この人だぁーれ？</h1>
+        <img src="./images/社会人.png" alt="アイコンの写真" width="64" height="64" id="icon"/>
+    </header>
+
+    <div class="container">
+        <div class="choose">
+            <label for="answer-type">どっちで回答する？？</label>
+            <div class="which">
+                <input type="radio" id="name" name="choosed" value="name" checked>
+                <label for="name">ニックネーム</label>
+                <p>or</p>
+                <input type="radio" id="face" name="choosed" value="face">
+                <label for="face">顔</label>
+            </div>
+        </div>
+
+        <!-- ラジオグループ作成 -->
+        <form>
+            <fieldset>
+                <legend>部署選択</legend>
+                <div>
+                    <input type="radio" id="sysdevelop" name="department" value="sysdevelop" checked />
+                    <label for="sysdevelop">システム開発部</label>
+                    <input type="radio" id="soumu" name="department" value="soumu" disabled/>
+                    <label for="soumu">総務部</label>
+                    <input type="radio" id="supplementsp" name="department" value="supplementsp" disabled/>
+                    <label for="supplementsp">サプリ販促事業部</label>
+                    <input type="radio" id="cosmesp" name="department" value="cosmesp" disabled/>
+                    <label for="cosmesp">コスメ販促事業部</label>
+                    <input type="radio" id="yokoten" name="department" value="yokoten" disabled/>
+                    <label for="yokoten">ヨコテン事業部</label>
+                    <input type="radio" id="production" name="department" value="production" disabled/>
+                    <label for="production">制作事業部</label>
+                    <input type="radio" id="infomanagement" name="department" value="infomanagement" disabled/>
+                    <label for="infomanagement">情報管理部</label>
+                    <input type="radio" id="concierge" name="department" value="concierge" disabled/>
+                    <label for="concierge">コンシェルジュ部</label>
+                    <input type="radio" id="ofstokyo" name="department" value="ofstokyo" disabled/>
+                    <label for="ofstokyo">OFS東京事業部</label>
+                    <input type="radio" id="supcosms" name="department" value="supcosms" disabled/>
+                    <label for="supcosms">サプリコスメ製造発送部</label>
+                    <input type="radio" id="ofsms" name="department" value="ofsms" disabled/>
+                    <label for="ofsms">OFS製造発送部</label>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+    <!-- 問題の部分作成 -->
+    <div class="question">
+        <div class="question-name">
+            <h2>この人のあだ名は？</h2>
+            <div class="question-main">
+                <div class="image-select">
+                    <!-- 最初は表示されていない　JSで入れる -->
+                    <img src="./images/oga00385.jpg" alt="問題の写真" width="360" height="360">
+                </div>
+                <div class="name-select">
+                    <input type="radio" id="otake" name="name-option" value="otake">
+                    <label for="otake">おたけ</label>
+                    <input type="radio" id="riri-" name="name-option" value="riri-">
+                    <label for="riri-">リリー</label>
+                    <input type="radio" id="mossan" name="name-option" value="mossan">
+                    <label for="mossan">もっさん</label>
+                    <input type="radio" id="shimopi-" name="name-option" value="shimopi-">
+                    <label for="shimopi-">しもぴー</label>
+                    <input type="radio" id="nanamin" name="name-option" value="nanamin">
+                    <label for="nanamin">ななみん</label>
+                    <input type="radio" id="makottyan" name="name-option" value="makottyan">
+                    <label for="makottyan">まこっちゃん</label>
+                    <input type="radio" id="utti-" name="name-option" value="utti-">
+                    <label for="utti-">うっちー</label>
+                    <input type="radio" id="daityan" name="name-option" value="daityan">
+                    <label for="daityan">だいちゃん</label>
+                    <input type="radio" id="yoshiokasan" name="name-option" value="yoshiokasan">
+                    <label for="yoshiokasan">吉岡さん</label>
+                    <input type="radio" id="nagayan" name="name-option" value="nagayan">
+                    <label for="nagayan">ながやん</label>
+                    <input type="radio" id="mippi-" name="name-option" value="mippi-">
+                    <label for="mippi-">みっぴー</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="question-face">
+            <h2>このあだ名の持ち主は？</h2>
+            <div class="question-main2">
+                <div class="mondai-face">
+                    <label>ななみん</label>
+                </div>
+                <div class="face-select">
+                    <input type="radio" id="otake-f" name="face-option" value="otake-f">
+                    <label for="otake-f"><img src="./images/otakesan.webp" alt="回答用の写真" width="120" height="120"></label>
+                    
+                    <input type="radio" id="riri-f" name="face-option" value="riri-f">
+                    <label for="riri-f"><img src="./images/riri-san.webp" alt="回答用の写真" width="120" height="120"></label>
+                    
+                    <input type="radio" id="mossan-f" name="face-option" value="mossan-f">
+                    <label for="mossan-f"><img src="./images/mossan.webp" alt="回答用の写真" width="120" height="120"></label>
+                    
+                    <input type="radio" id="shimopi-f" name="face-option" value="shimopi-f">
+                    <label for="shimopi-f"><img src="./images/shimopi-san.webp" alt="回答用の写真" width="120" height="120"></label>
+                    <input type="radio" id="nanamin-f" name="face-option" value="nanamin-f">
+                    <label for="nanamin-f"><img src="./images/oga00385.jpg" alt="回答用の写真" width="120" height="120"></label>
+                    <input type="radio" id="makottyan-f" name="face-option" value="makottyan-f">
+                    <label for="makottyan-f"><img src="./images/makottyan.webp" alt="回答用の写真" width="120" height="120"></label>
+                    
+                    <input type="radio" id="utti-f" name="face-option" value="utti-f">
+                    <label for="utti-f"><img src="./images/utti-san.webp" alt="回答用の写真" width="120" height="120"></label>
+                    
+                    <input type="radio" id="daityan-f" name="face-option" value="daityan-f">
+                    <label for="daityan-f"><img src="./images/akuisan.webp" alt="回答用の写真" width="120" height="120"></label>
+                    
+                    <input type="radio" id="yoshiokasan-f" name="face-option" value="yoshiokasan-f">
+                    <label for="yoshiokasan-f"><img src="./images/yoshiokasan.webp" alt="回答用の写真" width="120" height="120"></label>
+                    
+                    <input type="radio" id="nagayan-f" name="face-option" value="nagayan-f">
+                    <label for="nagayan-f"><img src="./images/nagayansan.webp" alt="回答用の写真" width="120" height="120"></label>
+                    
+                    <input type="radio" id="mippi-f" name="face-option" value="mippi-f">
+                    <label for="mippi-f"><img src="./images/oga00331.webp" alt="回答用の写真" width="120" height="120"></label>
+                    
+                </div>
+            </div>
+        </div>
+
+        <button id="gamecontrol">START</button>
+    </div>
+
+
+    <!-- 成績 -->
+    <div class="performance">
+        <h2>＊成績＊</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>日付</th>
+                    <th>正解率</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2025/1/22</td>
+                    <td>40%(4問/10問)</td>
+                </tr>
+                <tr>
+                    <td>2025/1/23</td>
+                    <td>50%(5問/10問)</td>
+                </tr>
+                <tr>
+                    <td>2025/1/24</td>
+                    <td>70%(7問/10問)</td>
+                </tr>
+                <tr>
+                    <td>2025/1/25</td>
+                    <td>100%(10問/10問)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="./js/index.js"></script>
 </body>
 </html>

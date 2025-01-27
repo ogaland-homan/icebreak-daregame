@@ -1,20 +1,251 @@
+@charset "utf-8";
+
+/* column */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    color: #333;
     margin: 0;
-    padding: 20px;
+    padding: 0;
+    text-align: center;
+    background-color: orange;
 }
 
-h1 {
-    color: #2c3e50;
+/* header */
+header {
+    background: #0a5a7a;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    height: 64px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
-p {
-    font-size: 1.2em;
+h1,
+h2,
+p,
+label {
+    color: white;
+    font-size: 24px;
 }
 
-#current-time {
+h1{
+    margin: auto 20px;
+}
+
+/* container */
+.container {
+    margin: 0 auto;
+    width: 1600px;
+}
+
+/* choose */
+.choose {
+    display: flex;
+    /* width: 1600px; */
+    margin: 80px auto 0;
+}
+
+.choose label,
+.choose p {
     font-weight: bold;
-    color: #e74c3c;
+    margin: 25px 0 10px;
+    font-size: 24px;
+}
+
+/* #name,
+#face {
+    padding: 10px 30px;
+    margin: 15px;
+    background: white;
+    color: #0d7fad;
+    border-radius: 30px;
+    border: 2px solid #0d7fad;
+    cursor: pointer;
+    font-size: 24px;
+
+} */
+
+.which{
+    display: flex;
+}
+
+.which label{
+    display: block;
+    width: 200px;
+    background: white;
+    color: #0a5a7a;
+    padding: 10px;
+    margin: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
+.choose input:checked+label{
+    background: #0a5a7a;
+    color: white;
+}
+.choose input{
+    display: none;
+}
+
+/* .pressed {
+    background: #0d7fad;
+    color: white;
+    border: 2px solid #0d7fad;
+} */
+
+/* ラジオグループ */
+form {
+    /* width: 1600px; */
+    margin: 10px auto 0;
+}
+
+legend {
+    font-size: 24px;
+    color: white;
+    text-align: left;
+
+}
+
+fieldset {
+    border: 2px solid white;
+}
+fieldset label{
+    margin: 0 45px 0 0;
+}
+
+
+
+/* 問題部分 */
+.question {
+    text-align: center;
+
+}
+
+.question h2 {
+    margin: 40px auto 0;
+    font-size: 48px;
+}
+
+.question img {
+    border-radius: 50%;
+}
+
+.question-main {
+    display: flex;
+    width: 1500px;
+    margin: 32px auto 0;
+}
+
+#gamecontrol {
+    margin: 0 auto;
+    font-size: 32px;
+    border-radius: 8px;
+    border: #0a5a7a;
+    box-sizing: border-box;
+    background: #0a5a7a;
+    color: white;
+    width: 300px;
+    height: 70px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* あだ名を回答する部分 */
+.image-select {
+    width: 40%;
+
+}
+
+.name-select {
+    margin: 15px 0;
+    width: 1140px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.name-select label{
+    width: 200px;
+    height: 54px;
+    background: white;
+    color: #0a5a7a;
+    padding: 10px;
+    margin: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
+.name-select input:checked+label{
+    background: #0a5a7a;
+    color: white;
+}
+.question input{
+    display: none;
+}
+
+/* 顔を回答する部分 */
+
+/* .question-face {
+    display: none;
+} */
+
+.question-main2 {
+    display: flex;
+    width: 1500px;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 0;
+}
+
+.face-select {
+    margin: 0;
+    width: 800px;
+    text-align: left;
+    
+}
+
+.face-select img {
+    margin: 0 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.mondai-face {
+    width: 40%;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mondai-face label{
+    padding:30px 30px;
+    height: 60px;
+    margin: 15px;
+    background: white;
+    color: #0a5a7a;
+    border-radius: 30px;
+    font-size: 50px;
+    font-weight: bold;
+}
+.face-select input:checked + label img{
+    border: 8px solid #0a5a7a;
+}
+
+/* 成績 */
+.performance {
+    width: 1600px;
+    margin: 40px auto;
+    border-top: 2px solid white;
+}
+
+.performance h2 {
+    text-align: left;
 }
