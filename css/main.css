@@ -191,7 +191,7 @@ fieldset label{
 
 /* 顔を回答する部分 */
 
-/* .question-face {
+/* #question-face {
     display: none;
 } */
 
@@ -248,4 +248,21 @@ fieldset label{
 
 .performance h2 {
     text-align: left;
+}
+.hidden{
+    display: none;
+}
+
+/* ダイアログ */
+.judge {
+    font-size: 64px;
+}
+  
+/* ダイアログ */
+.dialog {
+    margin: auto;
+    padding: 20px;
+}
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.7);
 }

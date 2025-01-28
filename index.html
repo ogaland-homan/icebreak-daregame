@@ -60,8 +60,8 @@
 
     <!-- 問題の部分作成 -->
     <div class="question">
-        <div class="question-name">
-            <h2>この人のあだ名は？</h2>
+        <div id="question-name">
+            <h2>この人のニックネームは？</h2>
             <div class="question-main">
                 <div class="image-select">
                     <!-- 最初は表示されていない　JSで入れる -->
@@ -94,8 +94,8 @@
             </div>
         </div>
 
-        <div class="question-face">
-            <h2>このあだ名の持ち主は？</h2>
+        <div id="question-face">
+            <h2>このニックネームの持ち主は？</h2>
             <div class="question-main2">
                 <div class="mondai-face">
                     <label>ななみん</label>
@@ -139,6 +139,18 @@
         <button id="gamecontrol">START</button>
     </div>
 
+    <!-- 正解・不正解のダイアログ -->
+    <dialog id="dialog" class="dialog w-sm">
+        <div class="flex-col gap-sm">
+            <div id="questionResult" class="judge">
+                <label>正解です！！！</label>
+                <label>⭕️✖️</label>
+            </div>
+            <button type="button" id="nextButton" class="button text-md">
+            次の問題へ
+            </button>
+        </div>
+    </dialog>
 
     <!-- 成績 -->
     <div class="performance">
