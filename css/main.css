@@ -268,5 +268,6 @@ dialog::backdrop {
 }
 
 #result_japanese{
+    display: block;
     color:red;
 }
