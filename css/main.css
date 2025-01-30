@@ -254,20 +254,34 @@ fieldset label{
 }
 
 /* ダイアログ */
-.judge {
+/* .judge {
     font-size: 64px;
-}
-  
+} */
+
 /* ダイアログ */
 .dialog {
     margin: auto;
     padding: 20px;
+    height: 220px;
+    width: 400px;
 }
 dialog::backdrop {
     background-color: rgba(0, 0, 0, 0.7);
 }
 
-#result_japanese{
+#result_message{
     display: block;
+    font-size: 40px;
     color:red;
+}
+
+#marubatu{
+    display: block;
+    font-size: 60px;
+    
+}
+
+#nextButton{
+    margin: 15px;
+    font-size: 20px;
 }
