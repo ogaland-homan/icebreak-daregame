@@ -6,6 +6,8 @@ body {
     padding: 0;
     text-align: center;
     background-color: #ff7800;
+    font-family: "Noto Sans JP";
+    ;
 }
 
 /* header */
@@ -21,15 +23,16 @@ header {
     left: 0;
 }
 
-h1,
-h2,
 p,
 label {
     color: white;
-    font-size: 24px;
+    font-size: 19px;
+    line-height: 1.7;
 }
 
-h1{
+h1 {
+    color: white;
+    font-size: 24px;
     margin: auto 20px;
 }
 
@@ -53,24 +56,11 @@ h1{
     font-size: 24px;
 }
 
-/* #name,
-#face {
-    padding: 10px 30px;
-    margin: 15px;
-    background: white;
-    color: #0d7fad;
-    border-radius: 30px;
-    border: 2px solid #0d7fad;
-    cursor: pointer;
-    font-size: 24px;
-
-} */
-
-.which{
+.which {
     display: flex;
 }
 
-.which label{
+.which label {
     display: block;
     width: 200px;
     background: white;
@@ -83,28 +73,23 @@ h1{
     border-radius: 30px;
     cursor: pointer;
 }
-.choose input:checked+label{
+
+.choose input:checked+label {
     background: #0a5a7a;
     color: white;
 }
-.choose input{
+
+.choose input {
     display: none;
 }
 
-/* .pressed {
-    background: #0d7fad;
-    color: white;
-    border: 2px solid #0d7fad;
-} */
-
 /* ラジオグループ */
 form {
-    /* width: 1600px; */
     margin: 10px auto 0;
 }
 
 legend {
-    font-size: 24px;
+    font-size: 20px;
     color: white;
     text-align: left;
 
@@ -112,12 +97,18 @@ legend {
 
 fieldset {
     border: 2px solid white;
+    border-radius: 12px;
 }
-fieldset label{
+
+fieldset label {
     margin: 0 45px 0 0;
 }
 
-
+.department {
+    display: flex;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
 
 /* 問題部分 */
 .question {
@@ -126,8 +117,12 @@ fieldset label{
 }
 
 .question h2 {
-    margin: 40px auto 0;
-    font-size: 48px;
+    color: white;
+    margin: 30px auto 0;
+    font-size: 40px;
+    height: 100px;
+    line-height: 2.3;
+    background:#b67f4fde;
 }
 
 .question img {
@@ -168,7 +163,7 @@ fieldset label{
     flex-wrap: wrap;
 }
 
-.name-select label{
+.name-select label {
     width: 200px;
     height: 54px;
     background: white;
@@ -181,20 +176,17 @@ fieldset label{
     border-radius: 30px;
     cursor: pointer;
 }
-.name-select input:checked+label{
+
+.name-select input:checked+label {
     background: #0a5a7a;
     color: white;
 }
-.question input{
+
+.question input {
     display: none;
 }
 
 /* 顔を回答する部分 */
-
-/* #question-face {
-    display: none;
-} */
-
 .question-main2 {
     display: flex;
     width: 1500px;
@@ -205,13 +197,13 @@ fieldset label{
 
 .face-select {
     margin: 0;
-    width: 800px;
+    width: 1140px;
     text-align: left;
-    
+
 }
 
 .face-select img {
-    margin: 0 20px;
+    margin: 0px 25px 10px;
     border-radius: 50%;
     cursor: pointer;
     font-size: 24px;
@@ -225,63 +217,104 @@ fieldset label{
     justify-content: center;
 }
 
-.mondai-face label{
-    padding:30px 30px;
+.mondai-face label {
+    padding: 30px 30px;
     height: 60px;
     margin: 15px;
     background: white;
     color: #0a5a7a;
     border-radius: 30px;
-    font-size: 50px;
+    line-height: 1.5;
+    font-size: 40px;
     font-weight: bold;
 }
-.face-select input:checked + label img{
-    border: 8px solid #0a5a7a;
+
+.face-select input:checked+label img {
+    outline: 5px solid #0a5a7a;
+    outline-offset: -5px;
 }
 
 /* 成績 */
-.performance {
+#performance {
     width: 1600px;
     margin: 40px auto;
     border-top: 2px solid white;
 }
 
-.performance h2 {
+#performance h2 {
+    color: white;
     text-align: left;
 }
-.hidden{
+
+.hidden {
     display: none;
 }
 
-/* ダイアログ */
-/* .judge {
-    font-size: 64px;
-} */
 
 /* ダイアログ */
 .dialog {
     margin: auto;
-    padding: 20px;
+    padding: 15px;
     height: 220px;
     width: 400px;
 }
+
 dialog::backdrop {
     background-color: rgba(0, 0, 0, 0.7);
 }
 
-#result_message{
+#result_message {
     display: block;
     font-size: 40px;
-    color:red;
+    color: red;
 }
 
-#marubatu{
+#marubatu {
     display: block;
     font-size: 60px;
-    
+
 }
 
-#nextButton{
-    margin: 15px;
+#nextButton {
+    margin: 10px 15px 0;
     font-size: 20px;
+}
+
+/* 成績表示 */
+table {
+    width: 500px;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+    color: #0a5a7a;
+    background: white;
+}
+
+th {
+    padding: 8px;
+    text-align: center;
+    background: #0a5a7a;
+    color: white;
+    border: 1px solid black;
+}
+
+canvas {
+    display: block;
+    width: 50%;
+    margin-top: 20px;
+    background: white;
+    /* height: 400px; */
+}
+
+.result {
+    display: flex;
+    width: 1500px;
+    margin: 0 auto;
+    gap: 10%;
+    text-align: left;
 }
