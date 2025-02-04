@@ -19,15 +19,15 @@
         <div class="choose">
             <label for="answer-type">どっちで回答する？？</label>
             <div class="which">
-                <input type="radio" id="name" name="choosed" value="name" checked>
-                <label for="name">ニックネーム</label>
+                <input type="radio" id="nickname" name="choosed" value="nickname" checked>
+                <label for="nickname">ニックネーム</label>
                 <p>or</p>
                 <input type="radio" id="face" name="choosed" value="face">
                 <label for="face">顔</label>
             </div>
         </div>
 
-        <!-- ラジオグループ作成 -->
+        <!-- 部署選択ラジオグループ -->
         <form>
             <fieldset>
                 <legend>部署選択</legend>
@@ -83,44 +83,45 @@
 
     <!-- 問題の部分作成 -->
     <div class="question">
-        <div id="question-name">
+        <!-- ニックネームを答える問題 -->
+        <div id="question-nickname">
             <h2>この人のニックネームは？</h2>
-            <div class="question-main">
-                <div class="image-select">
+            <div class="questionNickname-main">
+                <div class="select-face">
                     <!-- ランダムに抽選 -->
                     <img src="./images/オーガランドロゴ.jpg" width="360" height="360" id="question-image">
                 </div>
-                <div class="name-select">
-                    <input type="radio" id="otake" name="name-option" value="otake">
+                <div class="nickname-options">
+                    <input type="radio" id="otake" name="nickname-option" value="otake">
                     <label for="otake">おたけ</label>
-                    <input type="radio" id="riri-" name="name-option" value="riri-">
+                    <input type="radio" id="riri-" name="nickname-option" value="riri-">
                     <label for="riri-">リリー</label>
-                    <input type="radio" id="mossan" name="name-option" value="mossan">
+                    <input type="radio" id="mossan" name="nickname-option" value="mossan">
                     <label for="mossan">もっさん</label>
-                    <input type="radio" id="shimopi-" name="name-option" value="shimopi-">
+                    <input type="radio" id="shimopi-" name="nickname-option" value="shimopi-">
                     <label for="shimopi-">しもぴー</label>
-                    <input type="radio" id="nanamin" name="name-option" value="nanamin">
+                    <input type="radio" id="nanamin" name="nickname-option" value="nanamin">
                     <label for="nanamin">ななみん</label>
-                    <input type="radio" id="makottyan" name="name-option" value="makottyan">
+                    <input type="radio" id="makottyan" name="nickname-option" value="makottyan">
                     <label for="makottyan">まこっちゃん</label>
-                    <input type="radio" id="utti-" name="name-option" value="utti-">
+                    <input type="radio" id="utti-" name="nickname-option" value="utti-">
                     <label for="utti-">うっちー</label>
-                    <input type="radio" id="daityan" name="name-option" value="daityan">
+                    <input type="radio" id="daityan" name="nickname-option" value="daityan">
                     <label for="daityan">だいちゃん</label>
-                    <input type="radio" id="yoshiokasan" name="name-option" value="yoshiokasan">
+                    <input type="radio" id="yoshiokasan" name="nickname-option" value="yoshiokasan">
                     <label for="yoshiokasan">吉岡さん</label>
-                    <input type="radio" id="nagayan" name="name-option" value="nagayan">
+                    <input type="radio" id="nagayan" name="nickname-option" value="nagayan">
                     <label for="nagayan">ながやん</label>
-                    <input type="radio" id="mippi-" name="name-option" value="mippi-">
+                    <input type="radio" id="mippi-" name="nickname-option" value="mippi-">
                     <label for="mippi-">みっぴー</label>
                 </div>
             </div>
         </div>
-
+        <!-- 顔を答える問題 -->
         <div id="question-face">
             <h2>このニックネームの持ち主は？</h2>
-            <div class="question-main2">
-                <div class="mondai-face">
+            <div class="questionFace-main">
+                <div class="select-nickname">
                     <label id="question-label">ニックネーム</label>
                 </div>
                 <div class="face-select">
@@ -137,48 +138,42 @@
                     <input type="radio" id="shimopi-f" name="face-option" value="shimopi-">
                     <label for="shimopi-f"><img src="./images/shimopi-san.webp" alt="回答用の写真" width="110"
                             height="110"></label>
+
                     <input type="radio" id="nanamin-f" name="face-option" value="nanamin">
-                    <label for="nanamin-f"><img src="./images/oga00385.jpg" alt="回答用の写真" width="110"
-                            height="110"></label>
+                    <label for="nanamin-f"><img src="./images/oga00385.jpg" alt="回答用の写真" width="110" height="110"></label>
+
                     <input type="radio" id="makottyan-f" name="face-option" value="makottyan">
-                    <label for="makottyan-f"><img src="./images/makottyan.webp" alt="回答用の写真" width="110"
-                            height="110"></label>
+                    <label for="makottyan-f"><img src="./images/makottyan.webp" alt="回答用の写真" width="110" height="110"></label>
 
                     <input type="radio" id="utti-f" name="face-option" value="utti-">
                     <label for="utti-f"><img src="./images/utti-san.webp" alt="回答用の写真" width="110" height="110"></label>
 
                     <input type="radio" id="daityan-f" name="face-option" value="daityan">
-                    <label for="daityan-f"><img src="./images/akuisan.webp" alt="回答用の写真" width="110"
-                            height="110"></label>
+                    <label for="daityan-f"><img src="./images/akuisan.webp" alt="回答用の写真" width="110" height="110"></label>
 
                     <input type="radio" id="yoshiokasan-f" name="face-option" value="yoshiokasan">
-                    <label for="yoshiokasan-f"><img src="./images/yoshiokasan.webp" alt="回答用の写真" width="110"
-                            height="110"></label>
+                    <label for="yoshiokasan-f"><img src="./images/yoshiokasan.webp" alt="回答用の写真" width="110" height="110"></label>
 
                     <input type="radio" id="nagayan-f" name="face-option" value="nagayan">
-                    <label for="nagayan-f"><img src="./images/nagayansan.webp" alt="回答用の写真" width="110"
-                            height="110"></label>
+                    <label for="nagayan-f"><img src="./images/nagayansan.webp" alt="回答用の写真" width="110" height="110"></label>
 
                     <input type="radio" id="mippi-f" name="face-option" value="mippi-">
-                    <label for="mippi-f"><img src="./images/oga00331.webp" alt="回答用の写真" width="110"
-                            height="110"></label>
+                    <label for="mippi-f"><img src="./images/oga00331.webp" alt="回答用の写真" width="110" height="110"></label>
                 </div>
             </div>
         </div>
-        <button id="gamecontrol">START</button>
+        <button id="gameControl">START</button>
     </div>
 
     <!-- 正解・不正解のダイアログ -->
     <dialog id="dialog" class="dialog">
-        <div class="flex-col">
-            <div id="questionResult" class="judge">
-                <label id="result_message">正解です！！！</label>
-                <label id="marubatu">⭕️✖️</label>
-            </div>
-            <button type="button" id="nextButton" class="button text-md">
-                次の問題へ
-            </button>
+        <div id="questionResult">
+            <label id="result_message">正解です!!</label>
+            <label id="result_shape">⭕️✖️</label>
         </div>
+        <button type="button" id="nextButton" class="button text-md">
+            次の問題へ
+        </button>
     </dialog>
 
     <!-- 成績 -->
@@ -203,5 +198,4 @@
     <script src="./js/index.js"></script>
 
 </body>
-
 </html>

@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-/* column */
+/* common */
 body {
     margin: 0;
     padding: 0;
@@ -9,8 +9,6 @@ body {
     font-family: "Noto Sans JP";
     ;
 }
-
-/* header */
 header {
     background: #0a5a7a;
     display: flex;
@@ -22,14 +20,12 @@ header {
     top: 0;
     left: 0;
 }
-
 p,
 label {
     color: white;
     font-size: 19px;
     line-height: 1.7;
 }
-
 h1 {
     color: white;
     font-size: 24px;
@@ -48,18 +44,15 @@ h1 {
     /* width: 1600px; */
     margin: 80px auto 0;
 }
-
 .choose label,
 .choose p {
     font-weight: bold;
     margin: 25px 0 10px;
-    font-size: 24px;
+    font-size: 20px;
 }
-
 .which {
     display: flex;
 }
-
 .which label {
     display: block;
     width: 200px;
@@ -73,37 +66,30 @@ h1 {
     border-radius: 30px;
     cursor: pointer;
 }
-
 .choose input:checked+label {
     background: #0a5a7a;
     color: white;
 }
-
 .choose input {
     display: none;
 }
 
-/* ラジオグループ */
+/* 部署選択ラジオグループ */
 form {
     margin: 10px auto 0;
 }
-
 legend {
     font-size: 20px;
     color: white;
     text-align: left;
-
 }
-
 fieldset {
     border: 2px solid white;
     border-radius: 12px;
 }
-
 fieldset label {
     margin: 0 45px 0 0;
 }
-
 .department {
     display: flex;
     margin: 0 auto;
@@ -113,29 +99,22 @@ fieldset label {
 /* 問題部分 */
 .question {
     text-align: center;
-
 }
-
 .question h2 {
     color: white;
     margin: 30px auto 0;
-    font-size: 40px;
+    font-size: 36px;
     height: 100px;
-    line-height: 2.3;
+    line-height: 2.5;
     background:#b67f4fde;
 }
-
 .question img {
     border-radius: 50%;
 }
-
-.question-main {
-    display: flex;
-    width: 1500px;
-    margin: 32px auto 0;
+.question input {
+    display: none;
 }
-
-#gamecontrol {
+#gameControl {
     margin: 0 auto;
     font-size: 32px;
     border-radius: 8px;
@@ -149,21 +128,23 @@ fieldset label {
     text-align: center;
     cursor: pointer;
 }
-
 /* あだ名を回答する部分 */
-.image-select {
+.select-face {
     width: 40%;
 
 }
-
-.name-select {
+.questionNickname-main {
+    display: flex;
+    width: 1500px;
+    margin: 32px auto 0;
+}
+.nickname-options {
     margin: 15px 0;
     width: 1140px;
     display: flex;
     flex-wrap: wrap;
 }
-
-.name-select label {
+.nickname-options label {
     width: 200px;
     height: 54px;
     background: white;
@@ -176,48 +157,38 @@ fieldset label {
     border-radius: 30px;
     cursor: pointer;
 }
-
-.name-select input:checked+label {
+.nickname-options input:checked+label {
     background: #0a5a7a;
     color: white;
 }
 
-.question input {
-    display: none;
-}
-
 /* 顔を回答する部分 */
-.question-main2 {
+.questionFace-main {
     display: flex;
     width: 1500px;
     justify-content: center;
     align-items: center;
     margin: 0 auto 0;
 }
-
-.face-select {
-    margin: 0;
-    width: 1140px;
-    text-align: left;
-
-}
-
-.face-select img {
-    margin: 0px 25px 10px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 24px;
-}
-
-.mondai-face {
+.select-nickname {
     width: 40%;
     height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
-.mondai-face label {
+.face-select {
+    margin: 0;
+    width: 1140px;
+    text-align: left;
+}
+.face-select img {
+    margin: 0px 25px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 24px;
+}
+.select-nickname label {
     padding: 30px 30px;
     height: 60px;
     margin: 15px;
@@ -228,10 +199,35 @@ fieldset label {
     font-size: 40px;
     font-weight: bold;
 }
-
 .face-select input:checked+label img {
     outline: 5px solid #0a5a7a;
     outline-offset: -5px;
+}
+
+/* ダイアログ */
+.dialog {
+    margin: auto;
+    padding: 15px;
+    height: 220px;
+    width: 400px;
+    border: none;
+    border-radius: 12px;
+}
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+#result_message {
+    display: block;
+    font-size: 32px;
+    color: red;
+}
+#result_shape {
+    display: block;
+    font-size: 60px;
+}
+#nextButton {
+    margin: 10px 15px 0;
+    font-size: 20px;
 }
 
 /* 成績 */
@@ -240,53 +236,15 @@ fieldset label {
     margin: 40px auto;
     border-top: 2px solid white;
 }
-
 #performance h2 {
     color: white;
     text-align: left;
 }
-
-.hidden {
-    display: none;
-}
-
-
-/* ダイアログ */
-.dialog {
-    margin: auto;
-    padding: 15px;
-    height: 220px;
-    width: 400px;
-}
-
-dialog::backdrop {
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
-#result_message {
-    display: block;
-    font-size: 40px;
-    color: red;
-}
-
-#marubatu {
-    display: block;
-    font-size: 60px;
-
-}
-
-#nextButton {
-    margin: 10px 15px 0;
-    font-size: 20px;
-}
-
-/* 成績表示 */
 table {
     width: 500px;
     border-collapse: collapse;
     margin-top: 20px;
 }
-
 td {
     border: 1px solid black;
     padding: 8px;
@@ -294,7 +252,6 @@ td {
     color: #0a5a7a;
     background: white;
 }
-
 th {
     padding: 8px;
     text-align: center;
@@ -302,7 +259,6 @@ th {
     color: white;
     border: 1px solid black;
 }
-
 canvas {
     display: block;
     width: 50%;
@@ -310,7 +266,6 @@ canvas {
     background: white;
     /* height: 400px; */
 }
-
 .result {
     display: flex;
     width: 1500px;

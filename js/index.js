@@ -15,7 +15,7 @@
     { "src": "./images/oga00331.webp", "nickname": "みっぴー", "value": "mippi-" },
   ];
   //ニックネームを回答するモード
-  let name_mode = true;
+  let nickname_mode = true;
   //顔を回答するモード
   let face_mode = false;
   //表示インデックス
@@ -26,29 +26,37 @@
   let count = 0;
   //結果格納 
   let result;
+  //正解数カウント
   let correctCount = 0;
-
-  //正答格納用変数
+  //正答格納用
   let CorrectAnswer;
-  const gamecontrol = document.getElementById('gamecontrol'); // 開始ボタン
+  //正解率
+  let accuracyRate; 
+  //アニメーション
+  let animation;
+
+  const gameControl = document.getElementById('gameControl'); // 開始ボタン
   const image = document.getElementById('icon'); // ロゴ画像
-
-  let accuracyRate; //正解率
-  let animation; //アニメーション
-
+  
   // スタートボタンをクリックしたらアイコンが動き出す
-  gamecontrol.addEventListener('click', () => {
-    if (gamecontrol.textContent === 'START') {
+  gameControl.addEventListener('click', () => {
+    if (gameControl.textContent === 'START') {
       startAnimation();
       //１回目の抽選
       setQuestion();
       //ボタン表示変更
-      gamecontrol.textContent = 'OK';
+      gameControl.textContent = 'OK';
       //成績欄を非表示
       document.getElementById('performance').style.display = "none";
     }
-    else if (gamecontrol.textContent === 'OK') {
+    else if (gameControl.textContent === 'OK') {
       let answer = check_answer();
+      console.log(answer);
+      if(answer === undefined){
+        console.log(answer);
+        alert("選択してください");
+        return;
+      };
       result = judge(answer);
       displaydialog(result);
     };
@@ -77,15 +85,15 @@
     }
   }
 
-
   //表示する問題をランダムに抽選する関数
   function getRandomIndex() {
     RandomIndex = Math.floor(Math.random() * sysmember.length);
     return sysmember[RandomIndex];
   };
+
   //問題セット関数
   function setQuestion() {
-    if (name_mode) {
+    if (nickname_mode) {
       const question_image = document.getElementById('question-image');
       question_image.src = getRandomIndex().src;
     }
@@ -97,16 +105,17 @@
     sysmember.splice(RandomIndex, 1);
     count += 1;
   };
+
   //回答で何が選択されているかチェックする関数
   function check_answer() {
-    const name_option = document.getElementsByName("name-option");
+    const nickname_option = document.getElementsByName("nickname-option");
     const face_option = document.getElementsByName("face-option");
-    console.log(name_option);
+    console.log(nickname_option);
     console.log(face_option);
-    if (name_mode) {
-      for (let i = 0; i < name_option.length; i++) {
-        if (name_option[i].checked) {
-          return name_option[i].value;
+    if (nickname_mode) {
+      for (let i = 0; i < nickname_option.length; i++) {
+        if (nickname_option[i].checked) {
+          return nickname_option[i].value;
         };
       };
     };
@@ -128,54 +137,40 @@
     };
   };
 
-
   //初期化
   function formInit() {
-    document.getElementById("question-name").style.display = "";
+    document.getElementById("question-nickname").style.display = "";
     document.getElementById("question-face").style.display = "none";
     load(); //ローカルストレージ読込
     displayScores(); //成績表示
   }
 
   //ニックネームが選択されたときの処理
-  const name = document.getElementById("name");
-  name.addEventListener('click', () => {
-    name_mode = true;
+  const nickname = document.getElementById("nickname");
+  nickname.addEventListener('click', () => {
+    nickname_mode = true;
     face_mode = false;
-    document.getElementById("question-name").style.display = "";
+    document.getElementById("question-nickname").style.display = "";
     document.getElementById("question-face").style.display = "none";
   });
 
   //顔ボタンが選択されたときの処理
   const face = document.getElementById("face");
   face.addEventListener('click', () => {
-    name_mode = false;
+    nickname_mode = false;
     face_mode = true;
     document.getElementById("question-face").style.display = "";
-    document.getElementById("question-name").style.display = "none";
+    document.getElementById("question-nickname").style.display = "none";
   });
 
-  // ----------------------------------------------------------------------------------
-
-  /* ============================================================
-      要素一覧
-  ============================================================ */
-
+  //ダイアログ関連
   const dialog = document.getElementById("dialog");
-  const questionResult = document.getElementById("questionResult");
   const result_message = document.getElementById("result_message");
   const nextButton = document.getElementById("nextButton");
 
-  /* ============================================================
-      処理
-  ============================================================ */
-
   nextButton.addEventListener("click", clickNextButton);
 
-  /* ============================================================
-      イベント関連の関数一覧
-  ============================================================ */
-  // 問題が最後まで行ったかどうかを判定する
+  // 最終問題かどうかを判定する
   function isQuestionEnd() {
     return count === question_length;
   }
@@ -185,15 +180,20 @@
     // 正解率を計算する
     accuracyRate = Math.floor((correctCount / question_length) * 100);
     // 正解率を表示する
-    result_message.innerText = "お疲れ様でした^^";
-    result_message.style.fontSize = "28px";
-    marubatu.innerText = `あなたの正解数は、\n ${correctCount}/${question_length}\n おめでとうございます！`;
+    result_message.innerText = `お疲れ様でした^^ \n あなたの正解数は、\n ${correctCount}問/${question_length}問`;
+    result_message.style.fontSize = "24px";
+    if(accuracyRate >= 80){
+      result_shape.innerText = `おめでとうございます!!`;
+    }
+    else if(accuracyRate >= 60){
+      result_shape.innerText = `まずまずです！`;
+    }else{
+      result_shape.innerText = `もう少し頑張りましょう。`;
+    }
     nextButton.innerText = "閉じる";
-    result_message.style.color = " #0a5a7a";
-    marubatu.style.fontSize = "28px";
-    marubatu.style.color = " #0a5a7a";
-
-
+    result_message.style.color = " #ff7800";
+    result_shape.style.fontSize = "24px";
+    result_shape.style.color = " #ff7800";
     dialog.showModal();
   }
 
@@ -201,22 +201,20 @@
     // 正解かどうかを判定する
     if (result === true) {
       correctCount++;
-      result_message.innerText = "正解です！！！";
+      result_message.innerText = "正解です!!";
       result_message.style.color = "#de2956";
-      marubatu.innerText = "⭕️";
+      result_shape.innerText = "⭕️";
     } else {
-      result_message.innerText = "不正解です！！！";
+      result_message.innerText = "不正解です!!";
       result_message.style.color = "#785dc8";
-      marubatu.innerText = "✖️";
+      result_shape.innerText = "✖️";
     }
-
     // 最後の問題かどうかを判定する
     if (isQuestionEnd()) {
       nextButton.innerText = "結果を見る";
     } else {
       nextButton.innerText = "次の問題へ";
     }
-
     // ダイアログを表示する
     dialog.showModal();
   }
@@ -235,7 +233,6 @@
         // クイズの結果画面に結果を設定する
         setResult();
       }
-
     } else {
       // クイズの問題画面に問題を設定する
       setQuestion();
@@ -244,10 +241,10 @@
   }
 
   let resultList = [];
-  //ローカルストレージ-------------------------------------------------------------------
+
+  //ローカルストレージ関連
   // 読込
   function load() {
-
     let mydata = "";
     if (!localStorage.getItem('mydata')) {
       mydata = "データがありません";
@@ -256,8 +253,8 @@
       let jsonData = JSON.parse(storageValue);
       resultList = jsonData;
     }
-
   }
+
   // 保存
   function save() {
     const nowDate = new Date().toLocaleDateString();
@@ -271,7 +268,6 @@
     mydata = JSON.stringify(resultList);
     localStorage.setItem('mydata', mydata);
   }
-
 
   //成績一覧表表示
   function displayScores() {
@@ -354,8 +350,6 @@
     });
   }
 
-
   window.addEventListener('load', formInit());
-
 
 }
