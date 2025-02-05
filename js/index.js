@@ -15,13 +15,13 @@
     { "src": "./images/oga00331.webp", "nickname": "みっぴー", "value": "mippi-" },
   ];
   //ニックネームを回答するモード
-  let nickname_mode = true;
+  let nicknameMode = true;
   //顔を回答するモード
-  let face_mode = false;
+  let faceMode = false;
   //表示インデックス
-  let RandomIndex;
+  let randomIndex;
   //問題数を格納 最終問題かの判定を行う
-  const question_length = sysmember.length;
+  const questionLength = sysmember.length;
   //何問表示したかをカウント
   let count = 0;
   //結果格納 
@@ -29,7 +29,7 @@
   //正解数カウント
   let correctCount = 0;
   //正答格納用
-  let CorrectAnswer;
+  let correctAnswer;
   //正解率
   let accuracyRate; 
   //アニメーション
@@ -48,12 +48,11 @@
       gameControl.textContent = 'OK';
       //成績欄を非表示
       document.getElementById('performance').style.display = "none";
-    }
-    else if (gameControl.textContent === 'OK') {
+      return;
+    };
+    if (gameControl.textContent === 'OK') {
       let answer = check_answer();
-      console.log(answer);
       if(answer === undefined){
-        console.log(answer);
         alert("選択してください");
         return;
       };
@@ -86,50 +85,48 @@
   }
 
   //表示する問題をランダムに抽選する関数
-  function getRandomIndex() {
-    RandomIndex = Math.floor(Math.random() * sysmember.length);
-    return sysmember[RandomIndex];
+  function getrandomIndex() {
+    randomIndex = Math.floor(Math.random() * sysmember.length);
+    return sysmember[randomIndex];
   };
 
   //問題セット関数
   function setQuestion() {
-    if (nickname_mode) {
-      const question_image = document.getElementById('question-image');
-      question_image.src = getRandomIndex().src;
-    }
-    else if (face_mode) {
-      const question_label = document.getElementById('question-label');
-      question_label.textContent = getRandomIndex().nickname;
+    if (nicknameMode) {
+      const questionImage = document.getElementById('question-image');
+      questionImage.src = getrandomIndex().src;
     };
-    CorrectAnswer = sysmember[RandomIndex].value;
-    sysmember.splice(RandomIndex, 1);
+    if (faceMode) {
+      const questionLabel = document.getElementById('question-label');
+      questionLabel.textContent = getrandomIndex().nickname;
+    };
+    correctAnswer = sysmember[randomIndex].value;
+    sysmember.splice(randomIndex, 1);
     count += 1;
   };
 
   //回答で何が選択されているかチェックする関数
   function check_answer() {
-    const nickname_option = document.getElementsByName("nickname-option");
-    const face_option = document.getElementsByName("face-option");
-    console.log(nickname_option);
-    console.log(face_option);
-    if (nickname_mode) {
-      for (let i = 0; i < nickname_option.length; i++) {
-        if (nickname_option[i].checked) {
-          return nickname_option[i].value;
+    const nicknameOption = document.getElementsByName("nickname-option");
+    const faceOption = document.getElementsByName("face-option");
+    if (nicknameMode) {
+      for (let i = 0; i < nicknameOption.length; i++) {
+        if (nicknameOption[i].checked) {
+          return nicknameOption[i].value;
         };
       };
     };
-    if (face_mode) {
-      for (let i = 0; i < face_option.length; i++) {
-        if (face_option[i].checked) {
-          return face_option[i].value;
+    if (faceMode) {
+      for (let i = 0; i < faceOption.length; i++) {
+        if (faceOption[i].checked) {
+          return faceOption[i].value;
         };
       };
     };
   };
   //回答の正誤判定関数
   function judge(Useranswer) {
-    if (CorrectAnswer === Useranswer) {
+    if (correctAnswer === Useranswer) {
       return result = true;
     }
     else {
@@ -148,8 +145,8 @@
   //ニックネームが選択されたときの処理
   const nickname = document.getElementById("nickname");
   nickname.addEventListener('click', () => {
-    nickname_mode = true;
-    face_mode = false;
+    nicknameMode = true;
+    faceMode = false;
     document.getElementById("question-nickname").style.display = "";
     document.getElementById("question-face").style.display = "none";
   });
@@ -157,41 +154,42 @@
   //顔ボタンが選択されたときの処理
   const face = document.getElementById("face");
   face.addEventListener('click', () => {
-    nickname_mode = false;
-    face_mode = true;
+    nicknameMode = false;
+    faceMode = true;
     document.getElementById("question-face").style.display = "";
     document.getElementById("question-nickname").style.display = "none";
   });
 
   //ダイアログ関連
   const dialog = document.getElementById("dialog");
-  const result_message = document.getElementById("result_message");
+  const resultMessage = document.getElementById("result_message");
   const nextButton = document.getElementById("nextButton");
 
   nextButton.addEventListener("click", clickNextButton);
 
   // 最終問題かどうかを判定する
   function isQuestionEnd() {
-    return count === question_length;
+    return count === questionLength;
   }
 
   //結果表示処理
   function setResult() {
     // 正解率を計算する
-    accuracyRate = Math.floor((correctCount / question_length) * 100);
+    accuracyRate = Math.floor((correctCount / questionLength) * 100);
     // 正解率を表示する
-    result_message.innerText = `お疲れ様でした^^ \n あなたの正解数は、\n ${correctCount}問/${question_length}問`;
-    result_message.style.fontSize = "24px";
+    resultMessage.innerText = `お疲れ様でした^^ \n あなたの正解数は、\n ${correctCount}問/${questionLength}問`;
+    resultMessage.style.fontSize = "24px";
     if(accuracyRate >= 80){
       result_shape.innerText = `おめでとうございます!!`;
     }
-    else if(accuracyRate >= 60){
+    if((accuracyRate < 80) && (accuracyRate >= 60)){
       result_shape.innerText = `まずまずです！`;
-    }else{
+    }
+    if(accuracyRate < 60){
       result_shape.innerText = `もう少し頑張りましょう。`;
     }
     nextButton.innerText = "閉じる";
-    result_message.style.color = " #ff7800";
+    resultMessage.style.color = " #ff7800";
     result_shape.style.fontSize = "24px";
     result_shape.style.color = " #ff7800";
     dialog.showModal();
@@ -201,12 +199,12 @@
     // 正解かどうかを判定する
     if (result === true) {
       correctCount++;
-      result_message.innerText = "正解です!!";
-      result_message.style.color = "#de2956";
+      resultMessage.innerText = "正解です!!";
+      resultMessage.style.color = "#de2956";
       result_shape.innerText = "⭕️";
     } else {
-      result_message.innerText = "不正解です!!";
-      result_message.style.color = "#785dc8";
+      resultMessage.innerText = "不正解です!!";
+      resultMessage.style.color = "#785dc8";
       result_shape.innerText = "✖️";
     }
     // 最後の問題かどうかを判定する
@@ -258,10 +256,10 @@
   // 保存
   function save() {
     const nowDate = new Date().toLocaleDateString();
-    const nowscore = accuracyRate + "%(" + correctCount + "問/" + question_length + "問)";
+    const nowScore = accuracyRate + "%(" + correctCount + "問/" + questionLength + "問)";
     let mydata = {
       date: nowDate,
-      score: nowscore
+      score: nowScore
     };
     resultList.push(mydata);
     //JSON文字列に変換
