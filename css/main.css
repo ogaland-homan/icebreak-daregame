@@ -1,20 +1,275 @@
+@charset "utf-8";
+
+/* common */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    color: #333;
     margin: 0;
-    padding: 20px;
+    padding: 0;
+    text-align: center;
+    background-color: #ff7800;
+    font-family: "Noto Sans JP";
+    ;
 }
-
+header {
+    background: #0a5a7a;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    height: 64px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+p,
+label {
+    color: white;
+    font-size: 19px;
+    line-height: 1.7;
+}
 h1 {
-    color: #2c3e50;
+    color: white;
+    font-size: 24px;
+    margin: auto 20px;
 }
 
-p {
-    font-size: 1.2em;
+/* container */
+.container {
+    margin: 0 auto;
+    width: 1600px;
 }
 
-#current-time {
+/* choose */
+.choose {
+    display: flex;
+    /* width: 1600px; */
+    margin: 80px auto 0;
+}
+.choose label,
+.choose p {
     font-weight: bold;
-    color: #e74c3c;
+    margin: 25px 0 10px;
+    font-size: 20px;
+}
+.which {
+    display: flex;
+}
+.which label {
+    display: block;
+    width: 200px;
+    background: white;
+    color: #0a5a7a;
+    padding: 10px;
+    margin: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
+.choose input:checked+label {
+    background: #0a5a7a;
+    color: white;
+}
+.choose input {
+    display: none;
+}
+
+/* 部署選択ラジオグループ */
+form {
+    margin: 10px auto 0;
+}
+legend {
+    font-size: 20px;
+    color: white;
+    text-align: left;
+}
+fieldset {
+    border: 2px solid white;
+    border-radius: 12px;
+}
+fieldset label {
+    margin: 0 45px 0 0;
+}
+.department {
+    display: flex;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+/* 問題部分 */
+.question {
+    text-align: center;
+}
+.question h2 {
+    color: white;
+    margin: 30px auto 0;
+    font-size: 36px;
+    height: 100px;
+    line-height: 2.5;
+    background:#b67f4fde;
+}
+.question img {
+    border-radius: 50%;
+}
+.question input {
+    display: none;
+}
+#gameControl {
+    margin: 0 auto;
+    font-size: 32px;
+    border-radius: 8px;
+    border: #0a5a7a;
+    box-sizing: border-box;
+    background: #0a5a7a;
+    color: white;
+    width: 300px;
+    height: 70px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+}
+/* あだ名を回答する部分 */
+.select-face {
+    width: 40%;
+
+}
+.questionNickname-main {
+    display: flex;
+    width: 1500px;
+    margin: 32px auto 0;
+}
+.nickname-options {
+    margin: 15px 0;
+    width: 1140px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.nickname-options label {
+    width: 200px;
+    height: 54px;
+    background: white;
+    color: #0a5a7a;
+    padding: 10px;
+    margin: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
+.nickname-options input:checked+label {
+    background: #0a5a7a;
+    color: white;
+}
+
+/* 顔を回答する部分 */
+.questionFace-main {
+    display: flex;
+    width: 1500px;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 0;
+}
+.select-nickname {
+    width: 40%;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.face-select {
+    margin: 0;
+    width: 1140px;
+    text-align: left;
+}
+.face-select img {
+    margin: 0px 25px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 24px;
+}
+.select-nickname label {
+    padding: 30px 30px;
+    height: 60px;
+    margin: 15px;
+    background: white;
+    color: #0a5a7a;
+    border-radius: 30px;
+    line-height: 1.5;
+    font-size: 40px;
+    font-weight: bold;
+}
+.face-select input:checked+label img {
+    outline: 5px solid #0a5a7a;
+    outline-offset: -5px;
+}
+
+/* ダイアログ */
+.dialog {
+    margin: auto;
+    padding: 15px;
+    height: 220px;
+    width: 400px;
+    border: none;
+    border-radius: 12px;
+}
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+#result_message {
+    display: block;
+    font-size: 32px;
+    color: red;
+}
+#result_shape {
+    display: block;
+    font-size: 60px;
+}
+#nextButton {
+    margin: 10px 15px 0;
+    font-size: 20px;
+}
+
+/* 成績 */
+#performance {
+    width: 1600px;
+    margin: 40px auto;
+    border-top: 2px solid white;
+}
+#performance h2 {
+    color: white;
+    text-align: left;
+}
+table {
+    width: 500px;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+    color: #0a5a7a;
+    background: white;
+}
+th {
+    padding: 8px;
+    text-align: center;
+    background: #0a5a7a;
+    color: white;
+    border: 1px solid black;
+}
+canvas {
+    display: block;
+    width: 50%;
+    margin-top: 20px;
+    background: white;
+    /* height: 400px; */
+}
+.result {
+    display: flex;
+    width: 1500px;
+    margin: 0 auto;
+    gap: 10%;
+    text-align: left;
 }
