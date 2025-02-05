@@ -51,7 +51,7 @@
       return;
     };
     if (gameControl.textContent === 'OK') {
-      let answer = check_answer();
+      let answer = checkAnswer();
       if(answer === undefined){
         alert("選択してください");
         return;
@@ -106,7 +106,7 @@
   };
 
   //回答で何が選択されているかチェックする関数
-  function check_answer() {
+  function checkAnswer() {
     const nicknameOption = document.getElementsByName("nickname-option");
     const faceOption = document.getElementsByName("face-option");
     if (nicknameMode) {
